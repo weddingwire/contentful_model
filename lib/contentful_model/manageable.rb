@@ -71,14 +71,8 @@ module ContentfulModel
     end
 
     def define_setters
-      fields.each do |k, v|
-        if Contentful::Constants::KNOWN_LOCALES.include?(k.to_s)
-          v.keys.each do |name|
-            define_setter(name)
-          end
-        else
-          define_setter(k)
-        end
+      fields.keys.each do |k|
+        define_setter(k)
       end
     end
 
