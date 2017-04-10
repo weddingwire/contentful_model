@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "contentful", '~> 0.9'
+  s.add_dependency "contentful"
   s.add_dependency "contentful-management", '~> 1.0'
   s.add_dependency "redcarpet"
   s.add_dependency "activesupport"
@@ -29,4 +29,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "guard"
   s.add_development_dependency "guard-rspec"
   s.add_development_dependency "webmock"
+  s.add_development_dependency "simplecov"
 end
