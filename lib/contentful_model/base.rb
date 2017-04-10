@@ -1,5 +1,5 @@
 module ContentfulModel
-  class Base < Contentful::DynamicEntry
+  class Base < Contentful::Entry
     include ContentfulModel::ChainableQueries
     include ContentfulModel::Associations
     include ContentfulModel::Validations
@@ -43,7 +43,7 @@ module ContentfulModel
 
     #use method_missing to call fields on the model
     def method_missing(method, *args, &block)
-      result = fields[:"#{method.to_s.camelize(:lower)}"]
+      result = fields[method.to_sym]
       # we need to pull out any Contentful::Link references, and also things which don't have any fields at all
       # because they're newly created
       if result.is_a?(Array)
@@ -70,7 +70,7 @@ module ContentfulModel
     end
 
     def respond_to_missing?(method, private=false)
-      if fields[:"#{method.to_s.camelize(:lower)}"].nil?
+      if fields[method.to_sym].nil?
          super
       else
         true
